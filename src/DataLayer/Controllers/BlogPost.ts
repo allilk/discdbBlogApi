@@ -16,6 +16,7 @@ const generateIdentifier = () => {
 
 	return identifier;
 };
+
 export const getAllPosts = async (req: Request, res: Response) => {
 	const db = blogPost(sequelize);
 	const posts = await db.findAll();
@@ -24,6 +25,7 @@ export const getAllPosts = async (req: Request, res: Response) => {
 		posts,
 	});
 };
+
 export const getPost = async (req: Request, res: Response) => {
 	const db = blogPost(sequelize);
 	const { postId: identifier } = req.params;
@@ -32,6 +34,7 @@ export const getPost = async (req: Request, res: Response) => {
 
 	res.send({ post });
 };
+
 export const newPost = async (req: Request, res: Response) => {
 	const db = blogPost(sequelize);
 	const identifier = generateIdentifier();
