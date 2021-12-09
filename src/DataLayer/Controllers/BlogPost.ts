@@ -19,9 +19,23 @@ const generateIdentifier = () => {
 
 export const getAllPosts = async (req: Request, res: Response) => {
 	const db = blogPost(sequelize);
-	const posts = await db.findAll();
+
+	const maxLimit = 100;
+	const page = parseInt(req.query.page as string) || 1;
+	const limit =
+		parseInt(req.query.limit as string) > maxLimit
+			? maxLimit
+			: parseInt(req.query.limit as string) || 10;
+	const offset = (page - 1) * limit;
+
+	const posts = await db.findAll({
+		limit,
+		offset,
+		order: [["createdAt", "DESC"]],
+	});
 
 	res.send({
+		page,
 		posts,
 	});
 };

@@ -17,6 +17,14 @@ export const blogPost = (connection: Sequelize) => {
 				type: DataTypes.TEXT,
 				allowNull: false,
 			},
+			// image: {
+			// 	type: DataTypes.TEXT,
+			// 	allowNull: false,
+			// },
+			// thumbnail: {
+			// 	type: DataTypes.TEXT,
+			// 	allowNull: false,
+			// },
 			createdBy: {
 				type: DataTypes.TEXT,
 				allowNull: false,
